@@ -1,0 +1,7 @@
+Install the react dev tools from https://fb.me/react-devtools
+In the terminal,  Go to the folder where have the web page 
+npx http-server -c -1
+Open the chrome browser and navigate to http://localhost:8080
+click the web page you want to debug
+go to Chrome developer tools
+select "Components" from the menu
