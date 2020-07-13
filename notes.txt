@@ -121,3 +121,7 @@ var emp = new Employee();
 emp.id = 1000;
 
 
+Component
+    Can be used to represent one part of the UI
+    Encapsulation of presentation (jsx) + state + behavior (UI)
+    App UI = composition of components

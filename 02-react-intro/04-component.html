@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component Intro</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        //Presentation + behavior + state
+
+        //Using Ref
+        /* class Greeter extends React.Component{
+            
+            txtUserNameRef = React.createRef();
+
+            state = { 
+                greetMsg : '[Default greet message]'
+            };
+
+            //behavior
+            onBtnGreetClick = () => {
+                const userName = this.txtUserNameRef.current.value;
+                this.setState({greetMsg : `Hi ${userName}!, Have a nice day!`});
+            }
+
+            //Presentation
+            render(){
+                
+                return(
+                    <div>
+                        <h1>Greeter</h1>
+                        <hr/>
+                        <label htmlFor="">User Name :</label>
+                        <input type="text" ref={this.txtUserNameRef} />
+                        <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
+                        <div>{this.state.greetMsg}</div>
+                    </div>
+                )
+            }
+        } */
+
+        //Using state
+        class Greeter extends React.Component{
+
+            state = {
+                userName : '', 
+                greetMsg : '[Default greet message]'
+            };
+
+            //behavior
+            onBtnGreetClick = () => {
+                const userName = this.state.userName;
+                this.setState({greetMsg : `Hi ${userName}!, Have a nice day!`});
+            }
+
+            onUserNameTxtChange = (evt) => {
+                this.setState({userName : evt.target.value});
+            }
+
+            //Presentation
+            render(){
+                return(
+                    <div>
+                        <h1>Greeter</h1>
+                        <hr/>
+                        <label htmlFor="">User Name :</label>
+                        <input type="text" onChange={this.onUserNameTxtChange} />
+                        <input type="button" value="Greet" onClick={this.onBtnGreetClick}/>
+                        <div>{this.state.greetMsg}</div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(React.createElement(Greeter)
+            , document.getElementById('root'))
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
