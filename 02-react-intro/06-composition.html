@@ -22,6 +22,12 @@
             font-size: 18pt;
             padding-right: 10px;
         }
+        .goodSalary{
+            color : green;
+        }
+        .poorSalary{
+            color : red;
+        }
     </style>
     <script type="text/babel">
         class SalaryCalculator extends React.Component{
@@ -43,22 +49,24 @@
                 return(
                     <section>
                         <h1>Salary Calculator</h1>
-                        <div className="field">
-                            <label htmlFor="">Basic :</label>
-                            <input type="number" value={basic} onChange={ evt => this.setState({basic : evt.target.valueAsNumber})} />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="">HRA :</label>
-                            <input type="number"  value={hra} onChange={ evt => this.setState({hra : evt.target.valueAsNumber})}/>
-                        </div>
-                        <div className="field">
-                            <label htmlFor="">DA :</label>
-                            <input type="number"  value={da} onChange={ evt => this.setState({da : evt.target.valueAsNumber})}/>
-                        </div>
-                        <div className="field">
-                            <label htmlFor="">Tax :</label>
-                            <input type="range"  min="0" max="30" value={tax} onChange={ evt => this.setState({tax: evt.target.value})} />
-                        </div>
+                        <SalaryCalculatorInput 
+                            labelText="Basic :" 
+                            onValueChange={ value => this.setState({basic : value})} 
+                        />
+                        <SalaryCalculatorInput 
+                            labelText="HRA :" 
+                            onValueChange={ value => this.setState({hra : value})} 
+                        />
+                        <SalaryCalculatorInput 
+                            labelText="DA :" 
+                            onValueChange={ value => this.setState({da : value})} 
+                        />
+                        <SalaryCalculatorInput
+                            labelText="Tax :"
+                            type="range"
+                            onValueChange={ value => this.setState({tax : value})}
+                            min="0" max="30" defaultValue={tax}
+                        />
                         <div className="field">
                             <input type="button" value="Calculate" onClick={this.onCalculateClick} />
                         </div>
@@ -68,9 +76,22 @@
             }
         }
 
+        class SalaryCalculatorInput extends React.Component{
+            render(){
+                const { labelText, onValueChange, type="number", ...attrs } = this.props;
+                return(
+                    <div className="field">
+                        <label htmlFor="">{labelText}</label>
+                        <input type={type} {...attrs} onChange={ evt => onValueChange(evt.target.valueAsNumber) } />
+                    </div>
+                )
+            }
+        }
+
         class SalaryCalculatorResult extends React.Component{
             render() {
                 const { basic, hra, da, tax, salary } = this.props.data;
+                const salaryEle = salary < 10000 ? (<td className="poorSalary">{salary}</td>) : (<td className="goodSalary">{salary}</td>);
                 return(
                     <div className="field">
                         <table>
@@ -80,7 +101,7 @@
                                     <td>{hra}</td>
                                     <td>{da}</td>
                                     <td>{tax}</td>
-                                    <td>{salary}</td>
+                                    { salary === 0 ? null : salaryEle }
                                 </tr>
                             </tbody>
                         </table>
