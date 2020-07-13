@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Intro</title>
+    </head>
+    <body>
+        <h1 id="heading-1">Greeter</h1>
+        <label for="">Title</label>
+        <input type="text" name="" id="txtTitle">
+        <input type="button" value="Change Title" id="btnChangeTitle">
+        <hr>
+        <p>Proident in fugiat quis in ut labore aute occaecat mollit sint ea. Veniam irure veniam exercitation mollit est aute nulla in ex voluptate cupidatat. Dolor laborum enim ad cillum nostrud officia cupidatat irure mollit est ut mollit occaecat ex. Nulla labore nulla id eiusmod adipisicing occaecat.</p>
+        <script>
+            window.addEventListener('load', onDocumentLoad);
+            
+            function onDocumentLoad(){
+                var btnChangeTitle = document.getElementById('btnChangeTitle');
+                btnChangeTitle.addEventListener('click', onBtnChangeTitleClick);
+            }
+
+            function onBtnChangeTitleClick(){
+                var h1 = document.getElementById('heading-1');
+                var txtTitle = document.getElementById('txtTitle')
+                h1.innerText = txtTitle.value;
+            }
+        </script>
+    </body>
+</html>

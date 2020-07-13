@@ -1,0 +1,123 @@
+JavaScript
+    Data Types
+        Number, Boolean, String, Object, Function, Undefined
+    Contsructs
+        var, if else, switch case, while, for, try catch finally, throw, function
+    APIs
+        Date, Object, Array, Math, setTimeout, clearTimeout, setInterval, clearInterval, Error
+
+
+loosely typed
+    var x = 10;
+    x = 'abc';
+    x * 2
+
+objects
+    dictionary (key/value pairs)
+    dynamic
+    method = attribute whose value is a function
+
+functions are first class citizens (functions are like objects)
+    higher order functions
+    when invoked two implicit objects are passed to the function (this, arguments)
+    arguments = array like object containing all the arguments passed to the function
+
+this context (invocation context) ('this' changes based on how the function is invoked)
+    - As a method of an obj
+        this => obj
+    - As a normal function
+        this => global (window)
+    - Using the call method of the function (self study)
+    - Using the apply method of the function (self study)
+
+closure
+    scope
+
+    spinner
+        - up()
+        - down()
+
+    var spinner = {
+        counter : 0,
+        up : function(){
+            return ++this.counter;
+        },
+        down : function(){
+            return --this.counter;
+        }
+    }
+
+    function spinnerFactory(){
+        var counter = 0;
+        function up(){
+            return ++counter;
+        }
+        function down(){
+            return --counter;
+        }
+        return { up : up, down : down}
+    }
+
+    var spinner = spinnerFactory();
+    
+Prototypal Inheritance
+    One object (prototype object) acts as the base object for a family of objects
+
+    The 'family of objects' are created using a function called 'constructor function'
+
+    'constructor function' (aka class) is a regular function but invoked with the 'new' keyword
+        when invoked with a new keyword
+            this => new object
+            this => returned by default
+
+    The convention is that the constructor function names start with an uppercase
+
+    Example
+    function Employee(id, name, salary){
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+    var emp = new Employee(100, 'Magesh', 10000)
+    typeof Employee.prototype
+    Employee.prototype['city'] = 'Bangalore'
+    Employee.prototype['display'] = function(){
+        console.log(this.id, this.name, this.salary, this.city);
+    };
+    emp.display()
+    var emp2 = new Employee(200, 'Suresh', 20000)
+    emp2.display()
+
+    
+ES6 (EcmaScript 6 / ES2015) (http://es6-features.org)
+    Transpiler (Babeljs.io)
+
+1. let
+2. const
+3. array destructuring
+4. rest operator (array)
+5. spread operator (array)
+6. object destructuring
+7. rest operator (object)
+8. spread operator (object)
+9. default arguments
+10. arrow functions
+11. template strings
+12. object construction enhancements
+13. classes
+
+class Employee{
+    private id : number = 0;
+}
+var emp = new Employee();
+emp.id = 1000;
+
+    tsc
+
+class Employee{
+    id  = 0;
+}
+var emp = new Employee();
+emp.id = 1000;
+
+
