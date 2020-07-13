@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Intro</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .heading{
+            color : blue;
+        }
+    </style>
+    <script type="text/babel">
+        window.addEventListener('load', onDocumentLoad);
+        function onDocumentLoad(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click',onBtnRenderClick);
+        }
+
+        var counter = 0;
+        function onBtnRenderClick(){
+            ++counter;
+            
+            var app = (
+                <section>
+                    <h1 className="heading">React.js</h1>
+                    <hr/>
+                    <div>
+                        <label htmlFor="">Counter :</label>
+                        <span>{counter}</span>
+                    </div>
+                    <div>
+                        <h3>Introduction</h3>
+                        <p>Dolor et aliqua occaecat tempor amet. Est proident cillum qui magna. Nulla amet nisi ex consequat dolore sit elit aliquip dolor aliquip minim. Nisi esse elit labore Lorem ullamco. Eu consectetur magna anim incididunt consectetur sint deserunt aute reprehenderit aliqua voluptate ad. Esse mollit qui ipsum exercitation pariatur magna duis do reprehenderit laboris sint id aute. Tempor ad exercitation eu laboris voluptate ut.</p>
+                        <p>Laborum sint eiusmod velit enim ex qui voluptate deserunt. Reprehenderit id fugiat voluptate officia pariatur laboris excepteur qui dolor proident enim commodo. Sunt ea mollit adipisicing dolor et. Ex minim ad ea Lorem in nisi voluptate irure occaecat consectetur amet ut. Laborum ut do est voluptate laboris. Proident deserunt ut mollit cillum quis. Consequat culpa culpa sunt est mollit reprehenderit elit incididunt aliqua consectetur commodo commodo.</p>
+                    </div>
+                    <div>
+                        <h3>Advantages</h3>
+                        <ol>
+                            <li>Declarative</li>
+                            <li>Efficient</li>
+                        </ol>
+                    </div>
+                </section>
+            );
+            ReactDOM.render(app, document.getElementById('root'));
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Render" id="btnRender">
+    <div id="root">
+
+    </div>
+    
+</body>
+</html>
