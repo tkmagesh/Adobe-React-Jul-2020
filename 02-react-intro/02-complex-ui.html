@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Intro</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script>
+        window.addEventListener('load', onDocumentLoad);
+        function onDocumentLoad(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click',onBtnRenderClick);
+        }
+
+        var counter = 0;
+        function onBtnRenderClick(){
+            ++counter;
+            
+            var app = React.createElement('section', null, 
+                React.createElement('h1', null, 'React.js'),
+                React.createElement('hr'),
+                React.createElement('div', null, 
+                    React.createElement('label', null, 'Counter : '),
+                    React.createElement('span', null, counter)
+                ),
+                React.createElement('div', null, 
+                    React.createElement('h3', null, 'Introduction'),
+                    React.createElement('p', null, 'Sint Lorem eiusmod eu tempor quis adipisicing culpa. Consectetur Lorem et ad magna laborum nisi dolore mollit. Consequat nisi ipsum mollit reprehenderit exercitation aute laborum cupidatat aliqua.'),
+                    React.createElement('p', null, 'Dolore occaecat aliquip amet nostrud sint laborum do aliquip laboris sint reprehenderit nisi. Cupidatat ex minim enim ut veniam mollit deserunt enim. Aute ullamco consectetur tempor sit officia elit anim.')
+                ),
+                React.createElement('div', null,
+                    React.createElement('h3', null, 'Advantages'),
+                    React.createElement('ol', null, 
+                        React.createElement('li', null, 'Declarative'),
+                        React.createElement('li', null, 'Efficient'),
+                    )
+                ),
+            );
+            ReactDOM.render(app, document.getElementById('root'));
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Render" id="btnRender">
+    <div id="root">
+
+    </div>
+    
+</body>
+</html>
