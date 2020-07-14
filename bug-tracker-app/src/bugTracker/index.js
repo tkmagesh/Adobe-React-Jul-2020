@@ -2,8 +2,13 @@ import React, { Component, Fragment } from 'react';
 import './index.css';
 
 class BugTracker extends Component {
+    state = {
+        newBugName : ''
+    };
+
     render(){
-        const { bugs } = this.props;
+        const { bugs, addNew } = this.props;
+        const { newBugName } = this.state;
         const bugItems = bugs.map(bug => (
             <li key={bug.id}>
                 {bug.isClosed ? (<span className="bugname closed">{bug.name}</span>) : (<span className="bugname">{bug.name}</span>) }
@@ -30,8 +35,8 @@ class BugTracker extends Component {
                 </section>
                 <section className="edit">
                     <label htmlFor="">Bug Name :</label>
-                    <input type="text" name="" id="" />
-                    <input type="button" value="Add New" />
+                    <input type="text" onChange={ evt => this.setState({newBugName : evt.target.value})} />
+                    <input type="button" value="Add New" onClick={ _ => addNew(newBugName)} />
                 </section>
                 <section className="list">
                     <ol>
