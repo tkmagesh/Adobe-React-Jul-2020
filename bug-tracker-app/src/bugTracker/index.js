@@ -7,13 +7,13 @@ class BugTracker extends Component {
     };
 
     render(){
-        const { bugs, addNew } = this.props;
+        const { bugs, addNew, remove } = this.props;
         const { newBugName } = this.state;
         const bugItems = bugs.map(bug => (
             <li key={bug.id}>
                 {bug.isClosed ? (<span className="bugname closed">{bug.name}</span>) : (<span className="bugname">{bug.name}</span>) }
                 <div className="datetime">{bug.createdAt.toString()}</div>
-                <input type="button" value="Remove" />
+                <input type="button" value="Remove" onClick={ _ => remove(bug)}/>
             </li>
         ));
         const closedCount = bugs.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
