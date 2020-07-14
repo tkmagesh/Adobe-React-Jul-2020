@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spinner (Using StateManager)</title>
+    <script src="state-manager.js"></script>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        /* 
+        01. initial implementation
+        02. remove the 'store' dependency in the component
+        03. delegate the responsibility of creating actions from the component to the 'action creators'
+        04. simplify passing the action creators to the component
+        05. introducing action dispatchers for spinner
+        06. genaralize the bindActionCreators and moving to state manager
+        */
+
+        function spinnerReducer(currentState = 0, action){
+            if (action.type === 'INCREMENT') return currentState + 1;
+            if (action.type === 'DECREMENT') return currentState - 1;
+            if (action.type === 'DOUBLE_INCREMENT') return currentState * 2;
+            if (action.type === 'DOUBLE_DECREMENT') return currentState / 2;
+            return currentState;
+        }
+        var store = StateManager.createStore(spinnerReducer);
+
+        var spinnerActionCreators = {
+            decrement(){
+                const action = { type : 'DECREMENT'};
+                return action;
+            },
+            increment(){
+                const action = { type : 'INCREMENT'};
+                return action;
+            },
+            doubleIncrement(){
+                const action = { type : 'DOUBLE_INCREMENT'};
+                return action;
+            },
+            doubleDecrement(){
+                const action = { type : 'DOUBLE_DECREMENT'};
+                return action;
+            }
+        };
+
+        const Spinner  = ({ value , increment, decrement, doubleIncrement, doubleDecrement }) => (
+            <div>
+                <h1>Spinner</h1>
+                <hr/>
+                <input type="button" value="Double Decrement" onClick={doubleDecrement}/>
+                <input type="button" value="Decrement" onClick={decrement}/>
+                <span> [ {value} ] </span>
+                <input type="button" value="Increment" onClick={increment}/> 
+                <input type="button" value="Double Increment" onClick={doubleIncrement}/> 
+            </div>
+        );
+        
+        
+
+        const spinnerActionDispatchers = StateManager.bindActionCreators(spinnerActionCreators, store.dispatch);
+
+        function renderApp(){
+            var spinnerValue = store.getState();
+            ReactDOM.render(
+                <Spinner value={spinnerValue} {...spinnerActionDispatchers} />
+            , document.getElementById('root'));
+        }
+        renderApp();
+        store.subscribe(renderApp);
+    
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
