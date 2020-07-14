@@ -8,13 +8,13 @@ import BugList from './views/BugList';
 
 class BugTracker extends Component {
     render(){
-        const { bugs, addNew, remove, toggle } = this.props;
+        const { bugs, addNew, remove, toggle, removeClosed } = this.props;
         return(
             <Fragment>
                 <BugStats bugs={bugs} /> 
                 <BugSort />
                 <BugEdit addNew={addNew} />
-                <BugList {...{bugs, toggle, remove}} />
+                <BugList {...{bugs, toggle, remove, removeClosed}} />
             </Fragment>
         )
     }

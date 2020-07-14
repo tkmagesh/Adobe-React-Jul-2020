@@ -146,12 +146,12 @@ uniform approach to change the data
 
 
 Bug Tracker
-    1. Add new bugs
-    2. List the added bugs
-    3. Remove any bug
-    4. Toggle the closed status of any bug
-    5. Remove closed bugs
-    6. Display Stats ( # of closed bugs / total # of bugs )
+    (done) 1. Add new bugs
+    (done) 2. List the added bugs
+    (done) 3. Remove any bug
+    (done) 4. Toggle the closed status of any bug
+    (done) 5. Remove closed bugs
+    (done) 6. Display Stats ( # of closed bugs / total # of bugs )
     7. Sort the bugs (assignment)
     8. Persist the bugs in the server
     9. Make the bugs accessible using unique urls

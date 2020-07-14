@@ -11,6 +11,9 @@ function bugsReducer(currentState = initialState, action){
         const bugToReplace = action.payload;
         return currentState.map(bug => bug.id === bugToReplace.id ? bugToReplace : bug);
     }
+    if (action.type === 'INIT_BUGS'){
+        return action.payload;
+    }
     return currentState;
 }
 export default bugsReducer;
