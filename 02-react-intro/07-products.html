@@ -9,18 +9,20 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
+
+        var productNames = [];
+
         class Products extends React.Component{
             state = { 
-                newProductName : '', 
-                productNames : []
+                newProductName : ''
             }
             onAddNewClick = () => {
-                let { newProductName, productNames } = this.state;
-                productNames = [...productNames, newProductName];
-                this.setState({productNames : productNames});
+                let { newProductName } = this.state;
+                this.props.data.push(newProductName);
+                console.table(this.props.data);
             }
             render() {
-                const { productNames } = this.state;
+                const { data } = this.props;
                 const productItems = productNames.map((productName,index) => (<li key={index}>{productName}</li>));
                 return(
                     <div>
@@ -41,7 +43,7 @@
                 return(
                     <div>
                         <span>Count : </span>
-                        <span>[products count]</span>
+                        <span>{this.props.data.length}</span>
                     </div>
                 )
             }
@@ -49,8 +51,8 @@
 
         ReactDOM.render(
             <div>
-                <ProductsCount />
-                <Products/>
+                <ProductsCount data={productNames}/>
+                <Products data={productNames}/>
             </div>
             , document.getElementById('root'))
     
