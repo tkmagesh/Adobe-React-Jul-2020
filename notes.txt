@@ -125,3 +125,54 @@ Component
     Can be used to represent one part of the UI
     Encapsulation of presentation (jsx) + state + behavior (UI)
     App UI = composition of components
+
+
+Data (state)
+
+    Presenation
+        UI State
+        Likely that only the component might be interested in it
+        component state is ok
+
+    Domain
+        App State
+        Likely that all the parts of the application might be interested in it
+        component state is NOT ok
+
+
+Common container for data.
+container to be able to notify when the data is changing
+uniform approach to change the data
+
+
+Bug Tracker
+    1. Add new bugs
+    2. List the added bugs
+    3. Remove any bug
+    4. Toggle the closed status of any bug
+    5. Remove closed bugs
+    6. Display Stats ( # of closed bugs / total # of bugs )
+    7. Sort the bugs (assignment)
+    8. Persist the bugs in the server
+    9. Make the bugs accessible using unique urls
+    10. Write unit tests
+    11. Package and deployment
+
+React App
+    web server
+    babel
+    js bundler
+    css bundler
+    version the resources
+
+create-react-app 
+
+npx create-react-app bug-tracker-app
+
+if you want to use yarn, install it by running the following command
+npm install yarn -g
+
+ES6 Modules
+    Everything defined in a js file considered private
+    Anything to be exposed to the outside world has to be explicity exported
+    If the exported entities are needed in another js file, they have be explicity imported
