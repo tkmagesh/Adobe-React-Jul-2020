@@ -7,7 +7,10 @@ function bugsReducer(currentState = initialState, action){
     if (action.type === 'REMOVE_BUG'){
         return currentState.filter(bug => bug.id !== action.payload.id)
     }
-
+    if (action.type === 'REPLACE_BUG'){
+        const bugToReplace = action.payload;
+        return currentState.map(bug => bug.id === bugToReplace.id ? bugToReplace : bug);
+    }
     return currentState;
 }
 export default bugsReducer;

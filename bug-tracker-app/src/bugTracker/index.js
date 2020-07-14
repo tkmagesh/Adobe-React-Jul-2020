@@ -1,21 +1,26 @@
 import React, { Component, Fragment } from 'react';
 import './index.css';
 
+function BugItem({bug, toggle, remove}){
+    const bugClass = 'bugname ' + (bug.isClosed ? 'closed' : '');
+    return(
+        <li>
+            <span className={bugClass} onClick={_ => toggle(bug)}>{bug.name}</span>
+            <div className="datetime">{bug.createdAt.toString()}</div>
+            <input type="button" value="Remove" onClick={_ => remove(bug)} />
+        </li>
+    )
+}
+
 class BugTracker extends Component {
     state = {
         newBugName : ''
     };
 
     render(){
-        const { bugs, addNew, remove } = this.props;
+        const { bugs, addNew, remove, toggle } = this.props;
         const { newBugName } = this.state;
-        const bugItems = bugs.map(bug => (
-            <li key={bug.id}>
-                {bug.isClosed ? (<span className="bugname closed">{bug.name}</span>) : (<span className="bugname">{bug.name}</span>) }
-                <div className="datetime">{bug.createdAt.toString()}</div>
-                <input type="button" value="Remove" onClick={ _ => remove(bug)}/>
-            </li>
-        ));
+        const bugItems = bugs.map(bug => (<BugItem key={bug.id} {...{bug, toggle, remove}} />));
         const closedCount = bugs.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
         return(
             <Fragment>
