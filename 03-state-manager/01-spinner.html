@@ -10,6 +10,10 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
+        /* 
+        1. initial implementation
+        
+        */
         function spinnerReducer(currentState = 0, action){
             if (action.type === 'INCREMENT') return currentState + 1;
             if (action.type === 'DECREMENT') return currentState - 1;
