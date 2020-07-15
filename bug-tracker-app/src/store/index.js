@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
+import rootReducer from '../reducers'
 
-import bugsReducer from '../reducers/bugsReducer';
-const appStore = createStore(bugsReducer);
+const appStore = createStore(rootReducer);
 
 export default appStore;

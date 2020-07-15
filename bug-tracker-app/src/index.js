@@ -4,18 +4,34 @@ import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { bindActionCreators } from 'redux';
+
 import BugTracker from './bugTracker';
-import bugActions from './bugTracker/actions';
+import bugActions from './bugTracker/actions'; 
+
+import Spinner from './spinner';
+import spinnerActions from './spinner/actions';
+
+
 import appStore from './store';
 
 const bugActionDispatchers = bindActionCreators(bugActions, appStore.dispatch);
+const spinnerActionDispatchers = bindActionCreators(spinnerActions, appStore.dispatch);
 
 function renderApp(){
-  const bugs = appStore.getState();
+  //storeState
+  const storeState = appStore.getState();
+
+  //For bugTracker
+  const bugs = storeState.bugsData;
+
+  //For Spinner
+  const spinnerValue = storeState.spinnerData;
+
   ReactDOM.render(
     <React.StrictMode>
       <h1>Bug Tracker</h1>
       <hr/>
+      <Spinner value={spinnerValue} {...spinnerActionDispatchers} />
       <BugTracker bugs={bugs} {...bugActionDispatchers}/>
     </React.StrictMode>,
     document.getElementById('root')

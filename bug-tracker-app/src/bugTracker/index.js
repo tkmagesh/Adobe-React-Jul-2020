@@ -11,6 +11,7 @@ class BugTracker extends Component {
         const { bugs, addNew, remove, toggle, removeClosed } = this.props;
         return(
             <Fragment>
+                <h3>Bugs</h3>
                 <BugStats bugs={bugs} /> 
                 <BugSort />
                 <BugEdit addNew={addNew} />
