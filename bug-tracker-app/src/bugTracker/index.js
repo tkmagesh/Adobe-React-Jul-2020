@@ -10,7 +10,7 @@ import BugEdit from './views/BugEdit';
 import BugList from './views/BugList';
 
 
-class BugTracker extends Component {
+/* class BugTracker extends Component {
     render(){
         const { bugs, addNew} = this.props;
         return(
@@ -23,8 +23,19 @@ class BugTracker extends Component {
             </Fragment>
         )
     }
-}
+} */
 
+const BugTracker = ({bugs, addNew}) => (
+    <Fragment>
+        <h3>Bugs</h3>
+        <BugStats bugs={bugs} />
+        <BugSort />
+        <BugEdit addNew={addNew} />
+        <BugList />
+    </Fragment>
+);
+
+/* 
 function mapStateToProps(storeState){
     const bugs = storeState.bugsData;
     return { bugs : bugs };
@@ -35,4 +46,9 @@ function mapDispatchToProps(dispatch){
     return bugActionDispatchers;
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BugTracker);
+export default connect(mapStateToProps, mapDispatchToProps)(BugTracker); 
+*/
+export default connect(
+    ({bugsData}) => ({bugs : bugsData}),
+    dispatch => bindActionCreators(bugActionCreators, dispatch)
+)(BugTracker);
