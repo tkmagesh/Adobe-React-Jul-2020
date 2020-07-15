@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
-class BugEdit extends Component {
+/* class BugEdit extends Component {
     state = {
         newBugName: ''
     };
@@ -15,6 +15,18 @@ class BugEdit extends Component {
             </section>
         )
     }
+} */
+
+const BugEdit = ({addNew}) => {
+    const [ newBugName, setNewBugName ] = useState('');
+    return (
+        <section className="edit">
+            <label htmlFor="">Bug Name :</label>
+            <input type="text" onChange={evt => setNewBugName(evt.target.value)} />
+            <span> [ {newBugName.length} ] </span>
+            <input type="button" value="Add New" onClick={_ => addNew(newBugName)} />
+        </section>
+    )
 }
 
 export default BugEdit;
