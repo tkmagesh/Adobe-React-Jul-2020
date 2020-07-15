@@ -17,21 +17,40 @@ function getRemoteBugs(){
     });
     return p2;
 }
-function load(){
+async function load(){
     /* 
     const bugs = getLocalBugs();
     const action = { type : 'INIT_BUGS', payload: bugs };
     return action; 
     */
 
-    return function(dispatch){
+    //USING THE ASYNC MIDDLEWARE
+    /* return function(dispatch){
         const p = getRemoteBugs();
         p.then(function(bugs){
             const action = { type: 'INIT_BUGS', payload: bugs };
             dispatch(action);
         });
-    }
-    
+    } */
+
+    //using the promise middleware
+    /* const p = getRemoteBugs();
+    var p2 = p.then(function (bugs) {
+        const action = { type: 'INIT_BUGS', payload: bugs };
+        return action;
+    });
+    return p2; */
+
+    /* return getRemoteBugs()
+        .then(bugs => {
+            const action = { type: 'INIT_BUGS', payload: bugs };
+            return action;
+        }) */
+
+    //using async await
+    const bugs = await getRemoteBugs()
+    const action = { type: 'INIT_BUGS', payload: bugs };
+    return action;
 }
 
 export default load;
