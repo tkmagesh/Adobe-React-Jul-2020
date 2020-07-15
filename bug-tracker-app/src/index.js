@@ -14,6 +14,10 @@ ReactDOM.render(
     <Provider store={appStore} >
       <React.StrictMode>
         <h1>Bug Tracker</h1>
+        <div>
+          <label>Apply Filter : </label>
+          <input type="checkbox" />
+        </div>
         <hr/>
         <Spinner/>
         <BugTracker/>

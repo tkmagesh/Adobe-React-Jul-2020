@@ -17,8 +17,9 @@ const BugList = ({ bugs, toggle, remove, removeClosed }) => {
 }
 
 function mapStateToProps(storeState){
-    const bugs = storeState.bugsData;
-    return { bugs : bugs };
+    const bugs = storeState.bugsData,
+        spinnerValue = storeState.spinnerData;
+    return { bugs : bugs.filter(bug => bug.id % 2 === spinnerValue % 2) };
 }
 
 function mapDispatchToProps(dispatch){
