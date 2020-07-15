@@ -198,3 +198,44 @@ Container / Smart components
 
 Presentation / Dumb components
     These receive the data and actions from the container/smart components
+
+Promise
+
+Asynchronous Operations
+    callbacks
+    events
+    promises
+    async await
+    generators
+    observables
+
+What is an async operation?
+    An operation that is initiated but not waited for completion
+
+    Promise (resolved, rejected)
+        then (fn) (when the promise is resolved)
+        catch (fn) (when the promise is rejected)
+
+
+function add(x,y){
+    console.log(`    [@Service] processing ${x} and ${y}`);
+    const promise = new Promise(function(resolveFn, rejectFn){
+         setTimeout(() => {
+            const result = x + y;
+            console.log(`    [@Service] returning result`);
+            resolveFn(result);
+         }, 4000);
+    });
+    return promise;
+}
+
+console.log(`[@client] triggering add`);
+var p = add(100,200);
+p.then(function(result){
+    console.log(`[@client] result = ${result}`);
+})
+
+DoSomething()
+    .then(doSomethingElse)
+    .then(doSomethingElse)
+    .then(doSomethingElse)

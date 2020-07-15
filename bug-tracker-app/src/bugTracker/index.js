@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import bugActionCreators from './actions';
@@ -8,14 +8,19 @@ import BugStats from './views/BugStats';
 import BugSort from './views/BugSort';
 import BugEdit from './views/BugEdit';
 import BugList from './views/BugList';
+import axios from 'axios';
 
-
-/* class BugTracker extends Component {
+ class BugTracker extends Component {
+     onLoadBugsClick = () => {
+         axios.get('http://localhost:3030/bugs')
+            .then(response => console.table(response.data));
+     }
     render(){
         const { bugs, addNew} = this.props;
         return(
             <Fragment>
                 <h3>Bugs</h3>
+                <input type="button" value="Load Bugs" onClick={this.onLoadBugsClick} />
                 <BugStats bugs={bugs} /> 
                 <BugSort />
                 <BugEdit addNew={addNew} />
@@ -23,9 +28,9 @@ import BugList from './views/BugList';
             </Fragment>
         )
     }
-} */
+}
 
-const BugTracker = ({bugs, addNew}) => (
+/* const BugTracker = ({bugs, addNew}) => (
     <Fragment>
         <h3>Bugs</h3>
         <BugStats bugs={bugs} />
@@ -33,7 +38,7 @@ const BugTracker = ({bugs, addNew}) => (
         <BugEdit addNew={addNew} />
         <BugList />
     </Fragment>
-);
+); */
 
 /* 
 function mapStateToProps(storeState){
