@@ -249,3 +249,40 @@ Assignments:
     1. Implement 'Apply Filter' functionality
     2. Add the 'description' to the bug entity
     3. Create a 'bug details' route to display individual bug information
+
+Build activities:
+Bundler
+
+1. Convert the JSX to JS 
+2. compile ES6 to ES5
+3. minify the js files
+4. uglify the js files
+5. bundle the js files
+6. version the bundled js files
+
+7. complile sass/less to css
+8. minify the css files
+9. bundle the css files
+10. version the css files
+
+11. minify the html file
+12. update the html with the references of the generated js and css files
+
+
+grunt (task runner)
+
+gulp (task runner)
+
+webpack
+
+
+release - 1
+    app.7q90573453.min.js
+    
+release - 2
+    app.23098343.min.js
+
+
+Command:
+To eject (localize the webpack configuration and script for the application)
+yarn eject
