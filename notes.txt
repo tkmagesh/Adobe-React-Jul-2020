@@ -239,3 +239,13 @@ DoSomething()
     .then(doSomethingElse)
     .then(doSomethingElse)
     .then(doSomethingElse)
+
+
+Routing
+    Clientside part of the url
+
+
+Assignments: 
+    1. Implement 'Apply Filter' functionality
+    2. Add the 'description' to the bug entity
+    3. Create a 'bug details' route to display individual bug information
