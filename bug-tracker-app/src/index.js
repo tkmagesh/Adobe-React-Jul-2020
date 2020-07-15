@@ -3,42 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { bindActionCreators } from 'redux';
+import { Provider } from 'react-redux';
 
 import BugTracker from './bugTracker';
-import bugActions from './bugTracker/actions'; 
-
 import Spinner from './spinner';
-import spinnerActions from './spinner/actions';
-
 
 import appStore from './store';
 
-const bugActionDispatchers = bindActionCreators(bugActions, appStore.dispatch);
-const spinnerActionDispatchers = bindActionCreators(spinnerActions, appStore.dispatch);
-
-function renderApp(){
-  //storeState
-  const storeState = appStore.getState();
-
-  //For bugTracker
-  const bugs = storeState.bugsData;
-
-  //For Spinner
-  const spinnerValue = storeState.spinnerData;
-
-  ReactDOM.render(
-    <React.StrictMode>
-      <h1>Bug Tracker</h1>
-      <hr/>
-      <Spinner value={spinnerValue} {...spinnerActionDispatchers} />
-      <BugTracker bugs={bugs} {...bugActionDispatchers}/>
-    </React.StrictMode>,
+ReactDOM.render(
+    <Provider store={appStore} >
+      <React.StrictMode>
+        <h1>Bug Tracker</h1>
+        <hr/>
+        <Spinner/>
+        <BugTracker/>
+      </React.StrictMode>
+    </Provider>,
     document.getElementById('root')
   );
-}
-renderApp();
-appStore.subscribe(renderApp);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

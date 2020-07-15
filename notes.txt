@@ -176,3 +176,25 @@ ES6 Modules
     Everything defined in a js file considered private
     Anything to be exposed to the outside world has to be explicity exported
     If the exported entities are needed in another js file, they have be explicity imported
+
+Component Lifecycle events
+    Mount
+        componentWillMount
+        componentDidMount
+    Update
+        shouldComponentUpdate
+        componentWillUpdate
+        //render
+    Unmount
+        componentWillUnmount
+
+react-redux
+    connect
+    Provider
+
+
+Container / Smart components
+    Those that interface with the redux (typically using the 'connect' API)
+
+Presentation / Dumb components
+    These receive the data and actions from the container/smart components

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import spinnerActionCreators from './actions';
 
 class Spinner extends Component {
     state = {
         delta: 0
     };
-
+   shouldComponentUpdate(nextProps, nextState){
+       return this.props.value !== nextProps.value || this.state.delta !== nextState.delta;
+   }
     render = () => {
         const { value, increment, decrement, doubleIncrement, doubleDecrement } = this.props;
         const { delta } = this.state;
@@ -26,4 +32,21 @@ class Spinner extends Component {
     }
 }
 
-export default Spinner;
+/* 
+function mapStateToProps(storeState){
+    const spinnerValue = storeState.spinnerData;
+    return { value : spinnerValue };
+}
+
+function mapDispatchToProps(dispatch){
+    const spinnerActionDispatchers = bindActionCreators(spinnerActionCreators, dispatch);
+    return spinnerActionDispatchers;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Spinner); 
+*/
+
+export default connect(
+    ({spinnerData}) => ({ value : spinnerData}),
+    (dispatch) => bindActionCreators(spinnerActionCreators, dispatch)
+)(Spinner);
