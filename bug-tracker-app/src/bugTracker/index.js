@@ -12,8 +12,9 @@ import axios from 'axios';
 
  class BugTracker extends Component {
      onLoadBugsClick = () => {
-         axios.get('http://localhost:3030/bugs')
-            .then(response => console.table(response.data));
+         /* axios.get('http://localhost:3030/bugs')
+            .then(response => console.table(response.data)); */
+        this.props.load();
      }
     render(){
         const { bugs, addNew} = this.props;
