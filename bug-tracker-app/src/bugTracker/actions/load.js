@@ -1,22 +1,23 @@
-import axios from 'axios';
+//import axios from 'axios';
+import bugApi from '../services/bugApi';
 
 //sync
-function getLocalBugs(){
+/* function getLocalBugs(){
     return [
         {id : 1, name : 'Local bug - 1', isClosed : false, createdAt : new Date()},
         { id: 2, name: 'Local bug - 2', isClosed : true, createdAt: new Date() },
         { id: 3, name: 'Local bug - 3', isClosed : false, createdAt: new Date() },
     ]
-}
+} */
 
 //async
-function getRemoteBugs(){
+/* function getRemoteBugs(){
     var p = axios.get('http://localhost:3030/bugs');
     var p2 = p.then(function(response){
         return response.data;
     });
     return p2;
-}
+} */
 async function load(){
     /* 
     const bugs = getLocalBugs();
@@ -48,7 +49,12 @@ async function load(){
         }) */
 
     //using async await
-    const bugs = await getRemoteBugs()
+    /* const bugs = await getRemoteBugs()
+    const action = { type: 'INIT_BUGS', payload: bugs };
+    return action; */
+
+    //using the bugApi
+    const bugs = await bugApi.getAll();
     const action = { type: 'INIT_BUGS', payload: bugs };
     return action;
 }
