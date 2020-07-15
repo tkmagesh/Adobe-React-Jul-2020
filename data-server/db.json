@@ -29,6 +29,18 @@
       "name": "Examples not working",
       "isClosed": false,
       "createdAt": "2020-07-15T10:28:57.946Z"
+    },
+    {
+      "id": 6,
+      "name": "This is a new bug",
+      "isClosed": false,
+      "createdAt": "2020-07-15T10:40:43.722Z"
+    },
+    {
+      "id": 7,
+      "name": "Hooks are not working",
+      "isClosed": false,
+      "createdAt": "2020-07-15T10:41:28.222Z"
     }
   ],
   "projects": [

@@ -1,4 +1,4 @@
-import React, {Component, Fragment } from 'react';
+import React, {Component, Fragment, useEffect } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import bugActionCreators from './actions';
@@ -10,12 +10,11 @@ import BugEdit from './views/BugEdit';
 import BugList from './views/BugList';
 
 
- class BugTracker extends Component {
+ /* class BugTracker extends Component {
      componentDidMount = () => {         
         this.props.load();
      }
     render(){
-        console.log(this.props.bugs);
         const { bugs, addNew} = this.props;
         return(
             <Fragment>
@@ -27,7 +26,7 @@ import BugList from './views/BugList';
             </Fragment>
         )
     }
-}
+} */
 
 /* const BugTracker = ({bugs, addNew}) => (
     <Fragment>
@@ -51,6 +50,27 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BugTracker);  */
+
+
+    const BugTracker = ({ bugs, addNew, load }) => {
+        useEffect(() => {
+            //this function will be executed when the component is mounted / updated 
+            load();
+            return () => {
+                //this function will be executed with the component is unmounted
+            }
+        }, [] /* empty array will execute the function only when the component is mounted */);
+        return (
+            <Fragment>
+                <h3>Bugs</h3>
+                <BugStats bugs={bugs} />
+                <BugSort />
+                <BugEdit addNew={addNew} />
+                <BugList />
+            </Fragment>
+        )
+    };
+
 
  export default connect(
     ({bugsData : bugs}) => ({bugs}),
