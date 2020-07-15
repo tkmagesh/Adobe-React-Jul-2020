@@ -1,20 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
+import middlewares from './middlewares';
 
-const loggerMiddleware = store => next => action => {
-    console.group(action.type);
-    console.log(action);
-    console.group('before');
-    console.log(store.getState());
-    console.groupEnd();
-    next(action);
-    console.group('after');
-    console.log(store.getState());
-    console.groupEnd();
-    console.groupEnd();
-}
-    
-
-const appStore = createStore(rootReducer, applyMiddleware(loggerMiddleware));
+const appStore = createStore(rootReducer, middlewares);
 
 export default appStore;
