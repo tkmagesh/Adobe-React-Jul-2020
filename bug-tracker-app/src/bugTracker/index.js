@@ -8,12 +8,10 @@ import BugStats from './views/BugStats';
 import BugSort from './views/BugSort';
 import BugEdit from './views/BugEdit';
 import BugList from './views/BugList';
-import axios from 'axios';
+
 
  class BugTracker extends Component {
-     onLoadBugsClick = () => {
-         /* axios.get('http://localhost:3030/bugs')
-            .then(response => console.table(response.data)); */
+     onLoadBugsClick = () => {         
         this.props.load();
      }
     render(){
